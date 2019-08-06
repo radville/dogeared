@@ -1,7 +1,7 @@
 class BookChooser::CLI
 
     def call
-        BookChooser::Scraper.new.get_genres
+        scrape = BookChooser::Scraper.new.get_genres
         "Let's get started on choosing a book!"
         main_menu
     end

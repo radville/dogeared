@@ -1,13 +1,13 @@
 class BookChooser::Genre
     attr_accessor :name, :url
 
-    @@all == []
+    @@all = []
 
     def initialize
         @@all << self
     end
 
-    def all
+    def self.all
         @@all
     end
 
