@@ -26,9 +26,9 @@ class BookChooser::CLI
     def main_menu
         puts "Would you like help choosing a book? Y/n"
         input = nil
-        until input == "n" || input == "y" || input == ""
+        until input == "n" || input == "y" || input == "" || input == "no" || input == "yes"
             input = gets.strip.downcase
-            if input == "y" || input == ""
+            if input == "y" || input == "" || input == "yes"
                 list_genres
             elsif input == "n" || input == "no"
                 goodbye
