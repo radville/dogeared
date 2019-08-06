@@ -11,4 +11,9 @@ class BookChooser::Genre
         @@all
     end
 
+    def self.print_genre(index)
+        genre = self.all[index-1]
+        puts genre.name
+    end
+
 end

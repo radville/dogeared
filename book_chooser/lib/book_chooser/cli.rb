@@ -16,7 +16,7 @@ class BookChooser::CLI
             if input == "exit"
                 goodbye
             elsif input.to_i > 0
-                puts BookChooser::Genre.all[0].name
+                BookChooser::Genre.print_genre(input.to_i)
             else
                 puts "Invalid command. Please type the number of a genre or 'exit.'"
             end
