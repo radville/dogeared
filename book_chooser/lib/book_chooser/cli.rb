@@ -1,8 +1,8 @@
 class BookChooser::CLI
 
     def call
+        BookChooser::Scraper.new.get_genres
         "Let's get started on choosing a book!"
-        #BookChooser::Scraper.new.get_books - still need to make this
         main_menu
     end
 
