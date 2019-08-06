@@ -7,13 +7,19 @@ class BookChooser::CLI
     end
 
     def list_genres
-        puts "Great! Choose the number of the genre you would like to browse, or type 'exit'"
-        puts "1. Non fiction"
-        input = gets.strip
-        if input == "exit"
-            goodbye
-        elsif input == "1"
-            puts "list books from 1st genre"
+        puts "Great! Book Genres:"
+        BookChooser::Genre.all.each_with_index { |genre, index| puts "#{index+1}. #{genre.name}" }
+        puts "\nChoose the number of the genre you would like to browse, or type 'exit'."
+        input = nil
+        until input == "exit" || input.to_i > 0
+            input = gets.strip
+            if input == "exit"
+                goodbye
+            elsif input.to_i > 0
+                puts BookChooser::Genre.all[0].name
+            else
+                puts "Invalid command. Please type the number of a genre or 'exit.'"
+            end
         end
     end
 
