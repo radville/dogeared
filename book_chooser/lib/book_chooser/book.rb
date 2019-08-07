@@ -23,9 +23,10 @@ class BookChooser::Book
         puts "\n" + book.title + " " + book.author
         (book.title.length+book.author.length+1).times{print "-"}
         puts "\n##{index} in #{genre.name}"
-        puts "Time on NY Times bestseller list: #{book.time_on_list}"
+        puts "Time on NY Times Best Sellers list: #{book.time_on_list}"
         puts "Summary: #{book.description}"
         puts "Buy here: " + book.url.colorize(:light_blue)
+        puts "\n"
     end
 
 end
