@@ -6,26 +6,6 @@ class BookChooser::CLI
         main_menu
     end
 
-    def list_genres
-        puts "Great! Book Genres:"
-        BookChooser::Genre.all.each_with_index { |genre, index| puts "#{index+1}. #{genre.name}" }
-        puts "\nChoose the number of the genre you would like to browse, or type 'exit'."
-        input = nil
-        until input == "exit" || input.to_i > 0
-            input = gets.strip
-            if input == "exit"
-                goodbye
-            elsif input.to_i > 0
-                genre = BookChooser::Genre.all[input.to_i - 1]
-                BookChooser::Scraper.make_books(genre.url)
-                puts genre.name
-                puts BookChooser::Book.all.each_with_index { |book, i| puts "#{i+1}. #{book.name}" }
-            else
-                puts "Invalid command. Please type the number of a genre or 'exit.'"
-            end
-        end
-    end
-
     def main_menu
         puts "Would you like help choosing a book? Y/n"
         input = nil
@@ -39,6 +19,30 @@ class BookChooser::CLI
                 puts "Invalid command. Please enter yes or no."
             end  
         end    
+    end
+
+    def list_genres
+        puts "Great! Book Genres:"
+        BookChooser::Genre.all.each_with_index { |genre, index| puts "#{index+1}. #{genre.name}" }
+        puts "\nChoose the number of the genre you would like to browse, or type 'exit'."
+        input = nil
+        until input == "exit" || input.to_i > 0
+            input = gets.strip
+            if input == "exit"
+                goodbye
+            elsif input.to_i > 0
+                list_books(input.to_i - 1)
+            else
+                puts "Invalid command. Please type the number of a genre or 'exit.'"
+            end
+        end
+    end
+
+    def list_books(index)
+        genre = BookChooser::Genre.all[index]
+        BookChooser::Scraper.make_books(genre.url) unless genre.books.length > 0
+        puts genre.name
+        genre.books.each_with_index { |book, i| puts "#{i+1}. #{book.title}" }
     end
 
     def goodbye
