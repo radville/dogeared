@@ -1,9 +1,11 @@
 class BookChooser::Genre
     attr_accessor :name, :url
+    attr_reader :books
 
     @@all = []
 
     def initialize
+        @books = []
         @@all << self
     end
 
