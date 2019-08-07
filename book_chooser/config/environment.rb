@@ -1,6 +1,7 @@
 require 'pry'
 require 'nokogiri'
 require 'open-uri'
+require 'colorize'
 
 require_relative '../lib/book_chooser/cli'
 require_relative '../lib/book_chooser/version'

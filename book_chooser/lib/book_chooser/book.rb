@@ -17,12 +17,14 @@ class BookChooser::Book
         @@all
     end
 
-    def self.print_book(index)
-        book = self.all[index-1]
-        puts book.title
-        puts book.author
-        puts book.description
-        puts "Buy here: #{book.url}"
+    def self.print_book_from_genre(genre, index)
+        book = genre.books[index-1]
+        (book.title.length+book.author.length+1).times{print "-"}
+        puts "\n" + book.title + " " + book.author
+        (book.title.length+book.author.length+1).times{print "-"}
+        puts "\nTime on NY Times bestseller list: " + book.time_on_list
+        puts "Summary: #{book.description}"
+        puts "Buy here: " + book.url.colorize(:light_blue)
     end
 
 end
