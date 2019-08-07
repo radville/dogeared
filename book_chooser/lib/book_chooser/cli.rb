@@ -16,7 +16,10 @@ class BookChooser::CLI
             if input == "exit"
                 goodbye
             elsif input.to_i > 0
-                BookChooser::Genre.print_genre(input.to_i)
+                genre = BookChooser::Genre.all[input.to_i - 1]
+                BookChooser::Scraper.make_books(genre.url)
+                puts genre.name
+                puts BookChooser::Book.all.each_with_index { |book, i| puts "#{i+1}. #{book.name}" }
             else
                 puts "Invalid command. Please type the number of a genre or 'exit.'"
             end
