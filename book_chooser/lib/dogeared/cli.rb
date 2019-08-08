@@ -1,7 +1,7 @@
 class DogEared::CLI
 
     def call
-        scrape = DogEared::Scraper.new.get_genres
+        DogEared::Scraper.new.get_genres
         main_menu
     end
 
