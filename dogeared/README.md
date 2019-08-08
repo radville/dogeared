@@ -1,8 +1,6 @@
 # DogEared
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/dogeared`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+DogEared is a gem that scrapes the New York Times Best Sellers lists and suggests books to read from that list. The books are separated by genre and can be browsed by new books this week, or by all books in a genre. Books details are given, as well as a link to purchase the book.
 
 ## Installation
 
@@ -22,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Enter ./bin/dogeared to execute the file in the terminal, then follow the prompts.
 
 ## Development
 
