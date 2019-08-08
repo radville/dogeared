@@ -24,6 +24,16 @@ class DogEared::Genre
         genre.books.each { |book| puts "   #{book.title} #{book.author}" }
     end
 
+    def self.list_new_books(genre)
+        DogEared::Scraper.make_books(genre.url) unless genre.books.length > 0
+        puts "New books this week in #{genre.name}:".bold.colorize(:green)
+        genre.books.each do |book| 
+            if book.time_on_list == "New this week"
+            puts "   #{book.title} #{book.author}"
+            end
+        end
+    end 
+
     def self.find_genre(genre_name)
         self.all.detect do |genre|
             genre.name == genre_name

@@ -51,13 +51,14 @@ class DogEared::CLI
 
     def list_books_menu(genre)
         input = nil
-        until input == 1 || input == 4
+        until input == 1 || input == 5
             puts "-----------------------------------------"
             puts "Main menu".bold.colorize(:yellow)
             puts "1. Choose a book genre"
-            puts "   2. List books in #{genre.name.bold}"
-            puts "      3. Get details on a book in #{genre.name.bold}"
-            puts "4. Exit"
+            puts "   2. List all books in #{genre.name.bold}"
+            puts "   3. List only new books in #{genre.name.bold}"
+            puts "   4. Get details on a book in #{genre.name.bold}"
+            puts "5. Exit"
             puts "-----------------------------------------\n\n"
             puts "\nType the menu number of your selection".colorize(:yellow)
             input = gets.chomp.to_i
@@ -67,8 +68,10 @@ class DogEared::CLI
             when 2
                 DogEared::Genre.list_books(genre)
             when 3
-                checkout_book(genre)
+                DogEared::Genre.list_new_books(genre)
             when 4
+                checkout_book(genre)
+            when 5
                 return input == 3
             else
                 puts "Invalid command.".bold.colorize(:yellow)
