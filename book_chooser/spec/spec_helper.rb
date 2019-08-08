@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "book_chooser"
+require "dogeared"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

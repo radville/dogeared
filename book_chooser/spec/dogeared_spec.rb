@@ -1,6 +1,6 @@
-RSpec.describe BookChooser do
+RSpec.describe DogEared do
   it "has a version number" do
-    expect(BookChooser::VERSION).not_to be nil
+    expect(DogEared::VERSION).not_to be nil
   end
 
   it "does something useful" do

@@ -1,4 +1,4 @@
-class BookChooser::Genre
+class DogEared::Genre
     attr_accessor :name, :url, :books
 
     @@all = []
@@ -13,13 +13,13 @@ class BookChooser::Genre
     end
 
     def self.list_books_numbered(genre)
-        BookChooser::Scraper.make_books(genre.url) unless genre.books.length > 0
+        DogEared::Scraper.make_books(genre.url) unless genre.books.length > 0
         puts "Top books in #{genre.name}:".bold.colorize(:green)
         genre.books.each_with_index { |book, i| puts "#{i+1}. #{book.title} #{book.author}" }
     end
 
     def self.list_books(genre)
-        BookChooser::Scraper.make_books(genre.url) unless genre.books.length > 0
+        DogEared::Scraper.make_books(genre.url) unless genre.books.length > 0
         puts "Top books in #{genre.name}:".bold.colorize(:green)
         genre.books.each { |book| puts "   #{book.title} #{book.author}" }
     end

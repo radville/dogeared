@@ -1,9 +1,9 @@
-class BookChooser::Scraper
+class DogEared::Scraper
 
     def get_genres
         doc = Nokogiri::HTML(open("https://www.nytimes.com/books/best-sellers"))
         doc.css(".css-nzgijy").each do |g|
-            genre = BookChooser::Genre.new
+            genre = DogEared::Genre.new
             genre.name = g.text
             genre.url = "https://www.nytimes.com" + g["href"]
         end
@@ -32,7 +32,7 @@ class BookChooser::Scraper
 
     def self.make_books(genre_url)
         self.get_books(genre_url).each do |book|
-            BookChooser::Book.new(book)
+            DogEared::Book.new(book)
         end
     end
 end

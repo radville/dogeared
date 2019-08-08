@@ -1,4 +1,4 @@
-class BookChooser::Book
+class DogEared::Book
     attr_accessor :title, :url, :author, :description, :time_on_list, :genre
 
     @@all = []
@@ -10,7 +10,7 @@ class BookChooser::Book
 
     def genre=(genre)
         @genre = genre
-        BookChooser::Genre.find_genre(genre).books << self
+        DogEared::Genre.find_genre(genre).books << self
     end
 
     def self.all

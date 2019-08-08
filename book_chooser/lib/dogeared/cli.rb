@@ -1,7 +1,7 @@
-class BookChooser::CLI
+class DogEared::CLI
 
     def call
-        scrape = BookChooser::Scraper.new.get_genres
+        scrape = DogEared::Scraper.new.get_genres
         main_menu
     end
 
@@ -37,11 +37,11 @@ class BookChooser::CLI
             puts "-- Choose a book genre"
             puts "-- Exit\n\n"
             puts "-----------------------------------------"
-            BookChooser::Genre.print_all_genres
+            DogEared::Genre.print_all_genres
             puts "\nType the number of the genre you would like to browse.".colorize(:yellow)
             input = gets.strip.to_i
             if (1..11).include?(input)
-                genre = BookChooser::Genre.all[input.to_i - 1]
+                genre = DogEared::Genre.all[input.to_i - 1]
                 list_books_menu(genre)
             else
                 puts "Invalid command.".bold.colorize(:yellow)
@@ -65,7 +65,7 @@ class BookChooser::CLI
             when 1
                 genre_menu
             when 2
-                BookChooser::Genre.list_books(genre)
+                DogEared::Genre.list_books(genre)
             when 3
                 checkout_book(genre)
             when 4
@@ -86,12 +86,12 @@ class BookChooser::CLI
             puts "      -- Get details on a book in #{genre.name}"
             puts "-- Exit"
             puts "-----------------------------------------\n\n"
-            BookChooser::Genre.list_books_numbered(genre)
+            DogEared::Genre.list_books_numbered(genre)
             puts "\nEnter book number for details, or type 'back'".bold.colorize(:yellow)
             input = gets.strip
             if input.to_i > 0
-                BookChooser::Book.print_book_from_genre(genre, input.to_i)
-            elsif "back"
+                DogEared::Book.print_book_from_genre(genre, input.to_i)
+            elsif input == "back"
             else
                 puts "Invalid command.".bold.colorize(:yellow)
             end

@@ -1,4 +1,4 @@
-module BookChooser
+module DogEared
   class Error < StandardError; end
 end
 
