@@ -31,6 +31,7 @@ class BookChooser::Genre
     end
 
     def self.print_all_genres
+        puts "Genres".bold.colorize(:green)
         self.all.each_with_index { |genre, index| puts "   #{index+1}. #{genre.name}" }
     end
 

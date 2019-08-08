@@ -7,13 +7,15 @@ class BookChooser::CLI
 
     def main_menu
         puts "  //" + "   Dog-eared".bold
-        puts " // " + ".✧･".colorize(:yellow) + "  UᵔﻌᵔU  ".colorize(:blue) + "･✧.  "  .colorize(:yellow)
+        puts " // " + ".✧･".colorize(:yellow) + "  UᵔﻌᵔU  ".colorize(:green) + "･✧.  "  .colorize(:yellow)
         puts "// Get book suggestions from the New York Times Best Sellers list"
         input = nil
         until (1..2).include?(input)
+            puts "-----------------------------------------"
             puts "Main menu".bold.colorize(:yellow)
             puts "1. Choose a book genre"
             puts "2. Exit"
+            puts "-----------------------------------------"
             puts "\nType the menu number of your selection".colorize(:yellow)
             input = gets.strip.to_i
             case input 
@@ -30,10 +32,12 @@ class BookChooser::CLI
     def genre_menu
         input = nil
         until (1..11).include?(input)
+            puts "-----------------------------------------"
             puts "Main menu".bold.colorize(:yellow)
             puts "-- Choose a book genre"
+            puts "-- Exit\n\n"
+            puts "-----------------------------------------"
             BookChooser::Genre.print_all_genres
-            puts "-- Exit"
             puts "\nType the number of the genre you would like to browse.".colorize(:yellow)
             input = gets.strip.to_i
             if (1..11).include?(input)
@@ -48,11 +52,13 @@ class BookChooser::CLI
     def list_books_menu(genre)
         input = nil
         until input == 1 || input == 4
+            puts "-----------------------------------------"
             puts "Main menu".bold.colorize(:yellow)
             puts "1. Choose a book genre"
-            puts "   2. List books in #{genre.name}"
-            puts "      3. Get details on a book in #{genre.name}"
-            puts "4. Exit\n\n"
+            puts "   2. List books in #{genre.name.bold}"
+            puts "      3. Get details on a book in #{genre.name.bold}"
+            puts "4. Exit"
+            puts "-----------------------------------------\n\n"
             puts "\nType the menu number of your selection".colorize(:yellow)
             input = gets.chomp.to_i
             case input
@@ -73,11 +79,13 @@ class BookChooser::CLI
     def checkout_book(genre)
         input = nil
         until input == "back" || input.to_i > 0
+            puts "-----------------------------------------"
             puts "Main menu".bold.colorize(:yellow)
             puts "-- Choose a book genre"
             puts "   -- List books in #{genre.name}"
             puts "      -- Get details on a book in #{genre.name}"
-            puts "-- Exit\n\n"
+            puts "-- Exit"
+            puts "-----------------------------------------\n\n"
             BookChooser::Genre.list_books_numbered(genre)
             puts "\nEnter book number for details, or type 'back'".bold.colorize(:yellow)
             input = gets.strip
@@ -92,7 +100,7 @@ class BookChooser::CLI
 
     def goodbye
         puts "Happy reading!"
-        puts "U•ﻌ•Uฅ".colorize(:blue)
+        puts "U•ﻌ•Uฅ".colorize(:green)
     end
 
 end
