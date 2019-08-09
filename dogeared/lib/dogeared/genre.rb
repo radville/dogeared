@@ -24,8 +24,12 @@ class DogEared::Genre
 
     def self.list_new_books(genre)
         puts "New books this week in #{genre.name}:".bold.colorize(:green)
-        genre.books.each do |book| 
-            puts "   #{book.title} #{book.author}" if book.time_on_list == "New this week"
+        if genre.books.any? { |book| book.time_on_list == "New this week"}
+            genre.books.each do |book| 
+                puts "   #{book.title} #{book.author}" if book.time_on_list == "New this week"
+            end
+        else
+            puts "No new books this week. Check back next week!"
         end
     end
 
