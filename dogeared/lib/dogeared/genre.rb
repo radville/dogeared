@@ -13,31 +13,24 @@ class DogEared::Genre
     end
 
     def self.list_books_numbered(genre)
-        # DogEared::Scraper.make_books(genre.url) unless genre.books.length > 0
         puts "Top books in #{genre.name}:".bold.colorize(:green)
         genre.books.each_with_index { |book, i| puts "#{i+1}. #{book.title} #{book.author}" }
     end
 
     def self.list_books(genre)
-        # DogEared::Scraper.make_books(genre.url) unless genre.books.length > 0
         puts "Top books in #{genre.name}:".bold.colorize(:green)
         genre.books.each { |book| puts "   #{book.title} #{book.author}" }
     end
 
     def self.list_new_books(genre)
-        # DogEared::Scraper.make_books(genre.url) unless genre.books.length > 0
         puts "New books this week in #{genre.name}:".bold.colorize(:green)
         genre.books.each do |book| 
-            if book.time_on_list == "New this week"
-            puts "   #{book.title} #{book.author}"
-            end
+            puts "   #{book.title} #{book.author}" if book.time_on_list == "New this week"
         end
     end
 
     def self.find_genre(genre_name)
-        self.all.detect do |genre|
-            genre.name == genre_name
-        end
+        self.all.detect { |genre| genre.name == genre_name }
     end
 
     def self.print_all_genres
