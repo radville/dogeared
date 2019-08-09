@@ -18,6 +18,7 @@ class DogEared::CLI
             puts "--------------------------------------------------------\n\n"
             puts "Type the menu number of your selection".colorize(:color => :black, :background => :yellow)
             input = gets.strip.to_i
+            system("clear") || system("cls")
             case input 
             when 1
                 genre_menu
@@ -41,6 +42,7 @@ class DogEared::CLI
             puts "\n"
             puts "Type the number of the genre you would like to browse.".colorize(:color => :black, :background => :yellow)
             input = gets.strip.to_i
+            system("clear") || system("cls")
             if (1..11).include?(input)
                 genre = DogEared::Genre.all[input.to_i - 1]
                 list_books_menu(genre)
@@ -64,6 +66,7 @@ class DogEared::CLI
             puts "--------------------------------------------------------\n\n"
             puts "Type the menu number of your selection".colorize(:color => :black, :background => :yellow)
             input = gets.chomp.to_i
+            system("clear") || system("cls")
             case input
             when 1
                 genre_menu
@@ -94,6 +97,7 @@ class DogEared::CLI
             DogEared::Genre.list_books_numbered(genre)
             puts "\n" + "Enter book number for details, or type 'back'".colorize(:color => :black, :background => :yellow)
             input = gets.strip
+            system("clear") || system("cls")
             if input.to_i >= 1 && input.to_i <= genre.books.length
                 DogEared::Book.print_book_from_genre(genre, input.to_i)
             elsif input == "back"
