@@ -30,9 +30,9 @@ class DogEared::Scraper
         books_array
     end
 
-    def self.make_books(genre_url)
-        self.get_books(genre_url).each do |book|
-            DogEared::Book.new(book)
+    def self.make_books(genre)
+        if genre.books.length == 0
+            self.get_books(genre.url).each { |book| DogEared::Book.new(book) }
         end
     end
 end

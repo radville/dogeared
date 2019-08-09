@@ -51,6 +51,7 @@ class DogEared::CLI
     end
 
     def list_books_menu(genre)
+        DogEared::Scraper.make_books(genre)
         input = nil
         until input == 1 || input == 5
             puts "--------------------------------------------------------"
@@ -82,7 +83,7 @@ class DogEared::CLI
 
     def checkout_book(genre)
         input = nil
-        until input == "back" || input.to_i > 0
+        until input == "back" || input.to_i.between?(1, genre.books.length)
             puts "--------------------------------------------------------"
             puts "Main menu".bold.colorize(:yellow)
             puts "-- Choose a book genre"
@@ -93,7 +94,7 @@ class DogEared::CLI
             DogEared::Genre.list_books_numbered(genre)
             puts "\n" + "Enter book number for details, or type 'back'".colorize(:color => :black, :background => :yellow)
             input = gets.strip
-            if input.to_i > 0
+            if input.to_i >= 1 && input.to_i <= genre.books.length
                 DogEared::Book.print_book_from_genre(genre, input.to_i)
             elsif input == "back"
             else
