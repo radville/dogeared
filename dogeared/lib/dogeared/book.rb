@@ -19,13 +19,13 @@ class DogEared::Book
 
     def self.print_book_from_genre(genre, index)
         book = genre.books[index-1]
-        (book.title.length+book.author.length+1).times{print "-"}
+        (book.title.length+book.author.length+1).times{print "~"}
         puts "\n" + book.title + " " + book.author
-        (book.title.length+book.author.length+1).times{print "-"}
-        puts "\n##{index} in #{genre.name}"
-        puts "Time on NY Times Best Sellers list: #{book.time_on_list}"
-        puts "Summary: #{book.description}"
-        puts "Buy here: " + book.url.colorize(:light_blue)
+        (book.title.length+book.author.length+1).times{print "~"}
+        puts "\n##{index}".colorize(:green) + " in #{genre.name}"
+        puts "Time on NY Times Best Sellers list:".colorize(:green) + " #{book.time_on_list}"
+        puts "Summary:".colorize(:green) + " #{book.description}"
+        puts "Buy here: ".colorize(:green) + book.url.colorize(:light_blue)
         puts "\n"
     end
 
