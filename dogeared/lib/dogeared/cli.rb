@@ -7,7 +7,7 @@ class DogEared::CLI
 
     def main_menu
         puts "      Dog-eared".bold
-        puts "  .✧ ･".colorize(:yellow) + "  UᵔﻌᵔU  ".colorize(:green) + "･✧.  "  .colorize(:yellow)
+        puts "  .✧ ･".colorize(:yellow) + "  UᵔﻌᵔU  ".colorize(:green) + "･✧.".colorize(:yellow)
         puts "Get book suggestions from the New York Times Best Sellers list"
         input = nil
         until (1..2).include?(input)
@@ -29,6 +29,7 @@ class DogEared::CLI
         end
         goodbye
     end
+
 
     def genre_menu
         input = nil
@@ -77,7 +78,7 @@ class DogEared::CLI
             when 4
                 checkout_book(genre)
             when 5
-                return input == 3
+                break
             else
                 puts "Invalid command.".bold.colorize(:yellow)
             end
